@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 100;
+  background-color: #45124C;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+  top: 50%;
+  left: 2px;
+
+  a {
+    margin: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    top: 10%;
+  }
+}
+
+@media (max-width: 425px) {
+  nav {
+    display: none;
+  }
+}

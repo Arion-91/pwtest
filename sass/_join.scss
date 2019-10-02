@@ -1,0 +1,244 @@
+.join {
+  overflow: hidden;
+  position: relative;
+  background: #81398b url("../img/bg/circles.png") no-repeat center;
+  background-size: cover;
+  min-width: 100%;
+  padding: 1px;
+
+  &-circle {
+    position: absolute;
+    border: 1px rgba(255, 255, 255, 0.4) solid;
+    border-radius: 50%;
+  }
+}
+
+.circle-getStarted {
+  position: relative;
+  padding: 45px;
+  width: 465px;
+  height: 465px;
+  margin: 135px auto;
+  border-radius: 50%;
+
+  &-bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+  }
+
+  h2 {
+    color: #67326e;
+    font-size: 60px;
+  }
+
+  p {
+    color: #67326e;
+    font-size: 46px;
+  }
+
+  button {
+    @include bold;
+    margin: 0 auto;
+    padding: 11.5px 25px;
+    border: none;
+    border-radius: 3px;
+    background-image: -moz-linear-gradient( 0deg, rgb(226,32,40) 0%, rgb(249,180,22) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(226,32,40) 0%, rgb(249,180,22) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(226,32,40) 0%, rgb(249,180,22) 100%);
+    font-size: 16px;
+    color: white;
+  }
+}
+
+.circle-flower {
+  padding: 25px;
+  top: 20px;
+  left: -700px;
+
+  &-bg {
+    padding: 40px;
+    border-radius: 50%;
+    background: #F9B416 url("../img/circles/flower-with-leaves.png") no-repeat center;
+    width: 154px;
+    height: 153px;
+  }
+}
+
+.circle-heart {
+  padding: 16px;
+  top: 250px;
+  left: -560px;
+
+  &-bg {
+    padding: 25px;
+    border-radius: 50%;
+    background: #FE4A5D url("../img/circles/like.png") no-repeat center;
+    width: 101px;
+    height: 101px;
+  }
+}
+
+.circle-sendFlowers {
+  padding: 30px;
+  top: -75px;
+  left: -350px;
+
+  &-bg {
+    padding: 56px 0;
+    border-radius: 50%;
+    background-color: #FF6C00;
+    width: 203px;
+    height: 202px;
+  }
+
+  p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 32px;
+    color: white;
+    -moz-transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+  }
+}
+
+.circle-genders {
+  padding: 25px;
+  bottom: -120px;
+  left: -245px;
+
+  &-bg {
+    padding: 40px 10px;
+    border-radius: 50%;
+    background-color: #F9B416;
+    width: 159px;
+    height: 160px;
+  }
+
+  p {
+    line-height: 34px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 44px;
+    color: white;
+    -moz-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+
+    span {
+      font-size: 26px;
+    }
+  }
+}
+
+.circle-languages {
+  padding: 25px;
+  top: -100px;
+  left: 520px;
+
+  &-bg {
+    padding: 40px 10px;
+    width: 156px;
+    height: 156px;
+    border-radius: 50%;
+    background-color: #FE4A5D;
+  }
+
+  p {
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: white;
+    -moz-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+
+    span {
+      font-size: 20px;
+    }
+  }
+}
+
+.circle-gift {
+  padding: 15px;
+  bottom: 18px;
+  left: 520px;
+
+  &-bg {
+    width: 102px;
+    height: 102px;
+    border-radius: 50%;
+    background: #FE4A5D url("../img/circles/gift.png") no-repeat center;
+  }
+}
+
+.circle-chatTranslation {
+  padding: 28px;
+  bottom: 15px;
+  left: 780px;
+
+  &-bg {
+    padding: 65px 0;
+    width: 189px;
+    height: 190px;
+    border-radius: 50%;
+    background-color: #FF6C00;
+  }
+
+  p {
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: white;
+    -moz-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+  }
+}
+
+.circle-message {
+  padding: 20px;
+  top: -60px;
+  left: 1020px;
+
+  &-bg {
+    width: 133px;
+    height: 133px;
+    border-radius: 50%;
+    background: #F9B416 url("../img/circles/chat-bubbles.png") no-repeat center;
+  }
+}
+
+@media (max-width: 500px) {
+  .circle-getStarted {
+    width: 370px;
+    height: 370px;
+
+    h2 {
+      font-size: 50px;
+    }
+
+    p {
+      font-size: 36px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .circle-getStarted {
+    width: 320px;
+    height: 320px;
+
+    h2 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 26px;
+    }
+  }
+}

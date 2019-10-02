@@ -1,0 +1,243 @@
+.sign-up {
+  overflow: hidden;
+  margin: 135px 0 160px 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title img {
+    display: inline-block;
+  }
+
+  h2 {
+    display: inline-block;
+    margin-bottom: 45px;
+    font-size: 52px;
+    color: $dark-lilac;
+  }
+}
+
+.quote {
+  max-width: 80%;
+
+  p {
+    font-size: 30px;
+    line-height: 36px;
+    color: $dark-lilac;
+    text-align: center;
+  }
+
+  .author {
+    align-self: flex-end;
+    color: #fe4a5d;
+    text-align: right;
+  }
+}
+
+.form-sign {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 55px auto;
+  padding: 9px;
+  background-image: -moz-linear-gradient( 0deg, rgb(226,32,40) 0%, rgb(249,180,22) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(226,32,40) 0%, rgb(249,180,22) 100%);
+
+  &-bg {
+    padding: 65px 75px;
+    background: white;
+    width: 100%;
+    height: 100%;
+  }
+
+  p {
+    padding-bottom: 45px;
+    font-size: 38px;
+    color: $dark-lilac;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .signOR {
+      margin-bottom: 14px;
+      font-size: 1.4rem;
+      color: rgb(155, 155, 155);
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .signOR:before, .signOR:after {
+      content: '';
+      display: inline-block;
+      vertical-align: 3px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 2px;
+      background: rgb(220, 220, 220);
+      border: solid #FFF;
+      border-width: 0 7px;
+    }
+    .signOR:before {
+      margin-left: -100%;
+    }
+    .signOR:after {
+      margin-right: -100%;
+    }
+
+
+    label {
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    input {
+      @include bold;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      padding: 14px;
+      font-size: 16px;
+      color: #642f6b;
+    }
+
+    input::placeholder {
+      color: #642f6b;
+    }
+
+    input[name="facebookSignUp"] {
+      background: #2f53a3 url("../img/facebook.png") no-repeat 15% 50%;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    input[type="email"], input[type="text"], input[type="password"] {
+      border: 2px rgb(220, 220, 220) solid;
+      background-color: rgb(255, 255, 255);
+    }
+
+    input[type="submit"] {
+      background-color: rgb(129, 57, 139);
+      color: white;
+    }
+  }
+}
+
+.photos-left {
+  position: absolute;
+  right: 508px;
+
+  img {
+    position: absolute;
+  }
+
+  img:nth-child(1) {
+    top: 85px;
+    right: 374px;
+  }
+
+  img:nth-child(2) {
+    top: 15px;
+    right: 0;
+  }
+
+  img:nth-child(3) {
+    top: 316px;
+    right: 374px;
+  }
+
+  img:nth-child(4) {
+    top: 233px;
+    right: 0;
+  }
+}
+
+.photos-right {
+  position: absolute;
+  left: 508px;
+
+  img {
+    position: absolute;
+  }
+
+  img:nth-child(1) {
+    top: 40px;
+  }
+
+  img:nth-child(2) {
+    left: 334px;
+  }
+
+  img:nth-child(3) {
+    top: 328px;
+  }
+
+  img:nth-child(4) {
+    top: 214px;
+    left: 334px;
+  }
+}
+
+
+@media (max-width: 560px) {
+  .photos-right, .photos-left {
+    display: none;
+  }
+
+  .sign-up {
+    margin: 40px 0;
+  }
+
+  .form-sign {
+    width: 100%;
+    margin: 55px auto 0;
+
+    p {
+      padding-bottom: 10px;
+    }
+
+    &-bg {
+      padding: 25px 30px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .form-sign {
+    form {
+      input[name="facebookSignUp"] {
+        background: #2f53a3 url("../img/facebook.png") no-repeat 23% 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .form-sign {
+    form {
+      input[name="facebookSignUp"] {
+        background: #2f53a3 url("../img/facebook.png") no-repeat 18% 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .form-sign {
+    form {
+      input[name="facebookSignUp"] {
+        background: #2f53a3 url("../img/facebook.png") no-repeat 10% 50%;
+      }
+    }
+
+    p {
+      font-size: 32px;
+    }
+  }
+}

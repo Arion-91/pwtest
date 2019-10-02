@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="css/slider.css">
+</head>
+<body>
+<div class="content">
+    <div class="slider">
+        <button class="arrow arrow-left"><</button>
+        <div class="gallery">
+            <div class="elements">
+                <div class="element"><img src="img/slider/1.jpg" alt=""></div>
+                <div class="element"><img src="img/slider/2.jpg" alt=""></div>
+                <div class="element"><img src="img/slider/3.jpg" alt=""></div>
+                <div class="element"><img src="img/slider/4.jpg" alt=""></div>
+            </div>
+        </div>
+        <button class="arrow arrow-right">></button>
+    </div>
+</div>
+
+<script>
+    let nameSlider = '.slider';
+    let nameList = '.elements';
+    let nameElement = '.element';
+
+    let slider = document.querySelector(nameSlider);
+    let list = document.querySelector(nameList);
+
+    let width = 1280;
+    let count = document.querySelectorAll(nameElement).length;
+
+    createButtonScroll(slider, count, width);
+    settingList(list, nameElement);
+    slider.querySelector('.arrow-left').onclick = animateSlider(width, false);
+    slider.querySelector('.arrow-right').onclick = animateSlider(width, true);
+
+    function createButtonScroll(slider, count, width) {
+        let ul = document.createElement("ul");
+
+        ul.setAttribute("class", "scrolling");
+
+        for (let i = 0; i < count; i++) {
+            let li = document.createElement("li");
+            let button = document.createElement("button");
+
+            if (i === 0) {
+                button.setAttribute("class", "button_active");
+            }
+            button.setAttribute("value", i);
+
+            button.onclick = animateSlider(width, false, true, button);
+
+            li.appendChild(button);
+            ul.appendChild(li);
+        }
+
+        slider.insertBefore(ul, slider.lastChild);
+    }
+
+    function settingList(list, nameElement) {
+        let elements = list.querySelectorAll(nameElement);
+
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.left = i * 1280 + "px";
+        }
+
+        let beforeElement = elements[elements.length-1].cloneNode(true);
+        beforeElement.style.left = -1280 + "px";
+        list.insertBefore(beforeElement, elements[0]);
+
+        let afterElement = elements[0].cloneNode(true);
+        afterElement.style.left = elements.length * 1280 + "px";
+        list.appendChild(afterElement);
+
+        // // для простоты получения
+        // elements = document.querySelectorAll(nameElement);
+        // elements[0].setAttribute("class", "element element-left");
+        // elements[1].setAttribute("class", "element element-current");
+        // elements[2].setAttribute("class", "element element-right");
+    }
+
+    function animateSlider(width, rightDirection=true, isButton=false, button) {
+        let animateIsActive = false;
+
+        return function() {
+            if (animateIsActive || (isButton && button.getAttribute("class") === "button_active")) {
+                return;
+            }
+            animateIsActive = true;
+
+            let countItem = rightDirection ? -1 : 1;
+            if (isButton) {
+                countItem = compareWithActiveButton(button);
+            }
+            let changePosition = (width * countItem) / (width / 10);
+            let endPosition = width * (countItem >= 0 ? countItem : -countItem);
+
+            let elements = list.querySelectorAll(nameElement);
+
+            let change = 0;
+            let timer = setInterval(function() {
+                for (let i = 0; i < elements.length; i++) {
+                    let position = Number.parseInt(elements[i].style.left.substring(0, elements[i].style.left.length-2));
+                    elements[i].style.left = position + changePosition + "px";
+                }
+
+                if (rightDirection)
+                    change -= changePosition;
+                else
+                    change += changePosition;
+
+                if (change >= endPosition || change * -1 >= endPosition) {
+                    clearInterval(timer);
+                    animateIsActive = false;
+                }
+
+                if (!animateIsActive) {
+                    shaker(width);
+                }
+            }, 5);
+
+            let buttons = document.querySelectorAll(".slider .scrolling button");
+            for (let i = 0; i < buttons.length; i++) {
+                if (buttons[i].getAttribute("class") === "button_active") {
+                    let index = 0;
+                    if (isButton) {
+                        index = i + -countItem;
+                    } else if (rightDirection) {
+                        index = (i < buttons.length - 1 ? i + 1 : 0);
+                    } else {
+                        index = (i < 1 ? buttons.length - 1 : i - 1);
+                    }
+                    changeActiveButton(buttons[index]);
+                    break;
+                }
+            }
+        }
+    }
+
+    // если доходим до 1го или последнего, то переходим в противоположную сторону на предпоследний элемент
+    function shaker(width) {
+        let elements = document.querySelectorAll(nameElement);
+
+        for (let i = 0; i < elements.length; i++) {
+            if (elements[i].style.left === "0px") {
+                if (i === 0) {
+                    for (let j = 0; j < elements.length; j++) {
+                        elements[j].style.left = -width * (elements.length - j - 2) + "px";
+                    }
+                } else if (i === elements.length-1) {
+                    for (let j = 0; j < elements.length; j++) {
+                        elements[j].style.left = width * (j - 1) + "px";
+                    }
+                }
+            }
+        }
+    }
+
+    function changeActiveButton(button) {
+        let buttons = document.querySelectorAll(".slider .scrolling button");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].removeAttribute("class");
+        }
+        button.setAttribute("class", "button_active");
+    }
+
+    function compareWithActiveButton(button) {
+        let buttons = document.querySelectorAll(".slider .scrolling button");
+        let active = 0;
+        let current = 0;
+
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i] === button) {
+                current = i;
+            } else if (buttons[i].getAttribute("class") === "button_active") {
+                active = i;
+            }
+        }
+
+        return active - current;
+    }
+</script>
+</body>
+</html>
